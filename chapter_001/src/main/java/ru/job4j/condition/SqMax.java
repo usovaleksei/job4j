@@ -1,5 +1,5 @@
 package ru.job4j.condition;
-
+//вычисление максимального числа из четырех
 public class SqMax {
     public static int max(int first, int second, int third, int forth) {
         int result = forth;
