@@ -4,7 +4,7 @@ package ru.job4j.loop;
  * Class  Класс для рисования креста в консоли.
  * @author Aleksei Usov
  * @since 05.01.2020
- * @version 1.0
+ * @version 1.1
  */
 
 public class Slash {
