@@ -14,12 +14,9 @@ public class Slash {
             for (int cell = 0; cell < size; cell++) {
                 boolean left = (cell == row);
                 boolean right = (temp == (cell+row));
-                if (left) {
+                if (left || right) {
                     System.out.print ("0");
-                } else if (right) {
-                    System.out.print ("0");
-                }
-                    else {
+                } else {
                         System.out.print (" ");
                     }
                 }
