@@ -30,4 +30,34 @@ public class MatrixCheckTest {
         boolean result = MatrixCheck.monoVertical(input, 2);
         assertThat(result, is(true));
     }
+
+    //тест проверяет заполняется ли одномерный массив элементами диагнонали двумерной матрицы
+    @Test
+    public void whenDiagonal() {
+        char[][] input = {
+                {'X', ' ', ' '},
+                {' ', 'X', ' '},
+                {' ', ' ', 'X'},
+        };
+        char[] result = MatrixCheck.extractDiagonal(input);
+        char[] expect = {'X', 'X', 'X'};
+        assertThat(result, is(expect));
+    }
+
+    //тест проверяет заполняется ли одномерный массив элементами диагнонали двумерной матрицы
+    @Test
+    public void whenDiagonalis5() {
+        char[][] input = {
+                {'A', ' ', ' ', ' ', ' '},
+                {' ', 'b', ' ', ' ', ' '},
+                {' ', ' ', 'C', ' ', ' '},
+                {' ', ' ', ' ', 'd', ' '},
+                {' ', ' ', ' ', ' ', 'E'},
+
+        };
+        char[] result = MatrixCheck.extractDiagonal(input);
+        char[] expect = {'A', 'b', 'C', 'd', 'E'};
+        assertThat(result, is(expect));
+    }
 }
+

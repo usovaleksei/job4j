@@ -1,7 +1,7 @@
 package ru.job4j.array;
 
 /**
- * Class  Класс для проверки заполнения строки двумерного массива символом 'X'.
+ * Class  Класс для проверки заполнения строки, столбца, диагонали двумерного массива символом 'X'.
  * @author Aleksei Usov
  * @since 12.01.2020
  * @version 1.0
@@ -33,4 +33,12 @@ public class MatrixCheck {
         return result;
     }
 
+    //метод заполняет одномерный массив элементами диагонали из двумерного массива
+    public static char[] extractDiagonal (char[][] board) {
+        char[] result = new char [board.length];
+        for (int i=0; i != board.length; i++) {
+            result[i] = board[i][i];
+        }
+        return result;
+    }
 }
