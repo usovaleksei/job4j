@@ -2,6 +2,7 @@ package ru.job4j.array;
 
 /**
  * Class  Класс для проверки заполнения строки, столбца, диагонали двумерного массива символом 'X'.
+ * Поиск наличия выигрышной ситуации на поле в игре "Сокобан".
  * @author Aleksei Usov
  * @since 12.01.2020
  * @version 1.0
@@ -38,6 +39,24 @@ public class MatrixCheck {
         char[] result = new char [board.length];
         for (int i=0; i != board.length; i++) {
             result[i] = board[i][i];
+        }
+        return result;
+    }
+
+    //метод проверяет наличие полностью заполненной символом 'X' строки или столбца в квадратном массиве 5х5
+    public static boolean isWin (char[][] board) {
+        boolean result = false;
+        for (int i=0; i != board.length; i++) {
+
+            //проверяем наличие символа 'X' в диагонали матрицы
+            if (board[i][i] == 'X') {
+
+                //если в диагонали матрицы есть символ 'X' прроверяем заполненность соотвтетствующей строки или столбца символом 'X'
+               if (monoHorizontal (board, i) || monoVertical(board, i)) {
+                   result = true;
+                   break;
+               }
+            }
         }
         return result;
     }
