@@ -13,7 +13,7 @@ public class FindLoopTest {
         int value = 2;
         int result = find.indexOf(input, value);
         int expect = 2;
-        assertThat (result, is(expect));
+        assertThat(result, is(expect));
     }
     //тест, если разыскиваемый элемент массива 7 и он есть в массиве, то его индекс в массиве 5
     @Test
@@ -23,7 +23,7 @@ public class FindLoopTest {
         int value = 7;
         int result = find.indexOf(input, value);
         int expect = 5;
-        assertThat (result, is(expect));
+        assertThat(result, is(expect));
     }
     //тест, если нет указанного элемента в массиве, то выводим значение "-1"
     @Test
@@ -33,7 +33,7 @@ public class FindLoopTest {
         int value = 7;
         int result = find.indexOf(input, value);
         int expect = -1;
-        assertThat (result, is(expect));
+        assertThat(result, is(expect));
     }
 
     //тест, когда есть указанный элемент в заданном диапазоне индексов массива

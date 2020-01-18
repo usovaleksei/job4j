@@ -9,21 +9,21 @@ package ru.job4j.array;
  */
 
 public class Defragment {
-    public static String[] compress (String[] array) {
+    public static String[] compress(String[] array) {
         //перебираем значения элементов массива циклом for
-        for (int index = 0; index < (array.length-1); index++) {
+        for (int index = 0; index < (array.length - 1); index++) {
             //присваиваем переменной cell значение ячейки массива
             String cell = array[index];
             //проверяем соответствие значения ячейки значению null
             if (cell == null) {
                 int j = index;
                 //если значение ячейки массива null, то ищем ячейку с значением не null
-                while (array[j] == null && j < (array.length-1)) {
+                while (array[j] == null && j < (array.length - 1)) {
                     j++;
                 }
                 //находим значение не null, меняем местами с ячейкой, в которой остановились циклом for
                 array[index] = array[j];
-                array [j] = null;
+                array[j] = null;
             }
         }
         return array;
@@ -33,8 +33,8 @@ public class Defragment {
         String[] input = {"I", null, "wanna", null, "be", null, "compressed"};
         String[] compressed = compress(input);
         System.out.println();
-        for (int index=0; index < compressed.length; index++) {
-            System.out.print(compressed[index] + " ");
+        for (String cell : compressed) {
+            System.out.print(cell + " ");
         }
     }
 }

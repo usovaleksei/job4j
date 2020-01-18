@@ -9,7 +9,7 @@ public class Driver {
     public boolean hasLicense() {
         return this.license == 'A' || this.license == 'B' || this.license == 'C';
     }
-    public boolean canDrive (char category) {
+    public boolean canDrive(char category) {
         return this.license == category;
     }
 }

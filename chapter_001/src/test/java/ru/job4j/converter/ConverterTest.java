@@ -10,7 +10,7 @@ public class ConverterTest {
         int in = 140;
         int expected = 2;
         int out = Converter.rubleToEuro(in);
-        Assert.assertEquals (expected, out);
+        Assert.assertEquals(expected, out);
     }
 
     @Test

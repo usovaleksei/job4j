@@ -11,9 +11,9 @@ package ru.job4j.array;
 public class MatrixCheck {
 
     //метод проверяет наличие элементов 'X' в одной строке двумерного массива
-    public static boolean monoHorizontal (char[][] board, int row) {
+    public static boolean monoHorizontal(char[][] board, int row) {
         boolean result = true;
-            for (int j=0; j != board[0].length; j++) {
+            for (int j = 0; j != board[0].length; j++) {
                 if (board[row][j] != 'X') {
                     result = false;
                     break;
@@ -23,9 +23,9 @@ public class MatrixCheck {
     }
 
     //метод проверяет наличие элементов 'X' в одном столбце двумерного массива
-    public static boolean monoVertical (char[][] board, int column) {
+    public static boolean monoVertical(char[][] board, int column) {
         boolean result = true;
-        for (int i=0; i!= board.length; i++) {
+        for (int i = 0; i != board.length; i++) {
             if (board[i][column] != 'X') {
                 result = false;
                 break;
@@ -35,24 +35,24 @@ public class MatrixCheck {
     }
 
     //метод заполняет одномерный массив элементами диагонали из двумерного массива
-    public static char[] extractDiagonal (char[][] board) {
-        char[] result = new char [board.length];
-        for (int i=0; i != board.length; i++) {
+    public static char[] extractDiagonal(char[][] board) {
+        char[] result = new char[board.length];
+        for (int i = 0; i != board.length; i++) {
             result[i] = board[i][i];
         }
         return result;
     }
 
     //метод проверяет наличие полностью заполненной символом 'X' строки или столбца в квадратном массиве 5х5
-    public static boolean isWin (char[][] board) {
+    public static boolean isWin(char[][] board) {
         boolean result = false;
-        for (int i=0; i != board.length; i++) {
+        for (int i = 0; i != board.length; i++) {
 
             //проверяем наличие символа 'X' в диагонали матрицы
             if (board[i][i] == 'X') {
 
                 //если в диагонали матрицы есть символ 'X' прроверяем заполненность соотвтетствующей строки или столбца символом 'X'
-               if (monoHorizontal (board, i) || monoVertical(board, i)) {
+               if (monoHorizontal(board, i) || monoVertical(board, i)) {
                    result = true;
                    break;
                }

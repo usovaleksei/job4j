@@ -14,7 +14,7 @@ public class TriangleTest {
     //проверка, что треугольник не существует
     @Test
     public void whenNotExist() {
-        boolean result = Triangle.exist(2,8,3);
+        boolean result = Triangle.exist(2, 8, 3);
         assertThat(result, is(false));
     }
 }
