@@ -10,7 +10,7 @@ package ru.job4j.array;
 
 public class MatrixCheck {
 
-    //метод проверяет наличие элементов 'X' в одной строке двумерного массива
+    //метод проверяет наличие элементов 'X' в одной строке двумерного массива (игрового поля)
     public static boolean monoHorizontal(char[][] board, int row) {
         boolean result = true;
             for (int j = 0; j != board[0].length; j++) {
