@@ -2,7 +2,6 @@ package ru.job4j.condition;
 
 public class Driver {
     private char license = 'C';
-
     public void passExamOn(char category) {
         this.license = category;
     }

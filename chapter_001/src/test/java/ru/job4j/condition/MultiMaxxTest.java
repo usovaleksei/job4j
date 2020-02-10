@@ -5,11 +5,11 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 
-public class MultiMaxTest {
+public class MultiMaxxTest {
     //тест максимальное первое число
     @Test
     public void whenFirstMax() {
-        MultiMax check = new MultiMax();
+        MultiMaxx check = new MultiMaxx();
         int result = check.max(5, 3, 3);
         assertThat(result, is(5));
     }
@@ -17,7 +17,7 @@ public class MultiMaxTest {
     //тест максимальное второе число
     @Test
     public void whenSecondMax() {
-        MultiMax check = new MultiMax();
+        MultiMaxx check = new MultiMaxx();
         int result = check.max(2, 7, 3);
         assertThat(result, is(7));
     }
@@ -25,7 +25,7 @@ public class MultiMaxTest {
     //тест максимальное третье число
     @Test
     public void whenThirdMax() {
-        MultiMax check = new MultiMax();
+        MultiMaxx check = new MultiMaxx();
         int result = check.max(5, 3, 10);
         assertThat(result, is(10));
     }
@@ -33,7 +33,7 @@ public class MultiMaxTest {
     //тест все числа равны
     @Test
     public void whenEqualsMax() {
-        MultiMax check = new MultiMax();
+        MultiMaxx check = new MultiMaxx();
         int result = check.max(5, 5, 5);
         assertThat(result, is(5));
     }

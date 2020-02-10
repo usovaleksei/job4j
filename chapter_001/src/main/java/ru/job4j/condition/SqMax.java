@@ -2,20 +2,20 @@ package ru.job4j.condition;
 //вычисление максимального числа из четырех
 public class SqMax {
     public static int max(int first, int second, int third, int forth) {
-        int result = forth;
+        int rst = forth;
         if (first > second) {
             if (first > third) {
                 if (first > forth) {
-                    result = first;
+                    rst = first;
                 }
             }
         } else if (second > third) {
             if (second > forth) {
-                result = second;
+                rst = second;
             }
         } else if (third > forth) {
-            result = third;
+            rst = third;
         }
-        return result;
+        return rst;
     }
 }

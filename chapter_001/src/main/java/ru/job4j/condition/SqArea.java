@@ -5,7 +5,6 @@ public class SqArea {
         double height = p / (2 * (k + 1));
         double length = height * k;
         return height * length;
-
     }
     public static void main(String[] args) {
         double result1 = square(6, 2);
