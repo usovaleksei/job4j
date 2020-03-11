@@ -14,8 +14,9 @@ public class Jukebox {
 
     public static void main(String[] args) {
         Jukebox first = new Jukebox();
-        int position = 1;
-        first.music(position);
+        first.music(1);
+        first.music(2);
+        first.music(7);
     }
 }
 
