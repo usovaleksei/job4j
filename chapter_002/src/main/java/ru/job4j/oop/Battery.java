@@ -17,7 +17,7 @@ public class Battery {
             Battery second = new Battery(50);
             System.out.println("first: " + first.load + " second: " + second.load);
             first.exchange(second);
-            System.out.println("first: " + first.load + " second: " + second.load);
+            System.out.println("first : " + first.load + " second: " + second.load);
         }
     }
 
