@@ -1,27 +1,28 @@
 package ru.job4j.oop;
 
 /**
- * Class  Класс показывает порядок вызова конструктовров при наследовании классов
+ * Class  Перегрузка конструктовров при наследовании классов
  */
 
-//сздание подкласса в результате расширения класса Predator
+//создание подкласса в результате расширения класса Predator
 public class Tiger extends Predator {
 
+    //конструктор без параметров
     public Tiger() {
-        //вызов конструктора без параметров суперкласса Predator
         super();
+        System.out.println("load Predator");
+    }
+
+    //перегруженный констркутор с параметром name1
+    public Tiger(String name1) {
+        super(name1);
         System.out.println("load Predator");
     }
 
     public static void main(String[] args) {
         Tiger tiger1 = new Tiger();
         System.out.println();
-
-        Predator pred1 = new Predator();
-        System.out.println();
-
-        Animal an1 = new Animal();
+        Tiger tiger2 = new Tiger("Vasya");
         System.out.println();
     }
-
 }
