@@ -1,4 +1,4 @@
-package ru.job4j.oop1;
+package ru.job4j.oftop;
 
 public class Bug extends Item {
     public Bug(String name) {
