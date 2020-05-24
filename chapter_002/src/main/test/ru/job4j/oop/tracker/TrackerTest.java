@@ -28,7 +28,7 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        Item[] expected = {item, item2};
+        Item[] expected = {item, item1, item2};
         Item[] result = tracker.findAll();
         assertThat(result, is(expected));
     }

@@ -49,17 +49,7 @@ public class Tracker {
      * @return array of all items without null
      */
     public Item[] findAll() {
-        int size = 0;
-        Item[] itemsWithoutNull = new Item[position];
-        for (int index = 0; index < position; index++) {
-            Item item = items[index];
-            if (item.getId() != null && item.getName() != null) {
-                itemsWithoutNull[size] = item;
-                size++;
-            }
-        }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        return itemsWithoutNull;
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -101,3 +91,5 @@ public class Tracker {
         return itemId;
     }
 }
+
+
