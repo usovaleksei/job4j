@@ -1,25 +1,25 @@
 package ru.job4j.io;
 
-import java.util.Scanner;
-
 public class Matches {
 
     public static void main(String[] args) {
+        Player player = new Player();
+        int count = 0;
+        String name = "";
         int matches = 11;
-        Scanner input = new Scanner(System.in);
+
         while (matches > 0) {
-            System.out.println("Количество спичек на столе: " + matches);
-            System.out.print("Выберите количество спичек от 1 до 3: \n");
-            int select = Integer.valueOf(input.nextLine());
-            if (select < 1 || select > 3) {
-                System.out.println("Введённое число не соответствует диапазону от 1 до 3\n");
-                continue;
-            } else if (matches - select <= 0) {
-                System.out.println("Вы победили!");
-            }
-            matches -= select;
-            System.out.println();
+            count++;
+            name = isEven(count) ? "Aleksei" : "Roman";
+            int userAnswer = player.getStep(name);
+            matches -= userAnswer;
+            System.out.println("Matches value on table: " + matches);
         }
+        System.out.println("Победитель " + name);
+    }
+
+    private static boolean isEven(int value) {
+        return value % 2 == 0;
     }
 }
 
