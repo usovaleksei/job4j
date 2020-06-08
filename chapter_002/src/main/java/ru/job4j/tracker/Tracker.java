@@ -49,7 +49,17 @@ public class Tracker {
      * @return array of all items without null
      */
     public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+        int size = 0;
+        Item[] itemsWithoutNull = new Item[position];
+        for (int index = 0; index < position; index++) {
+            Item item = items[index];
+            if (item != null ) {
+                itemsWithoutNull[size] = item;
+                size++;
+            }
+        }
+        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
+        return itemsWithoutNull;
     }
 
     /**
@@ -59,18 +69,16 @@ public class Tracker {
      * @return items with declared key
      */
 
-    public Item[] findByName(String key) {
-        int size = 0;
-        Item[] namesWithoutNull = new Item[position];
+    public Item findByName(String key) {
+        Item[] item = new Item[position];
+        Item itemName = null;
         for (int index = 0; index < position; index++) {
-            Item item = items[index];
-            if (item.getName() != null && item.getName().equals(key)) {
-                namesWithoutNull[size] = item;
-                size++;
+            itemName = items[index];
+            if (itemName != null && itemName.getName().equals(key)) {
+                break;
             }
         }
-        namesWithoutNull = Arrays.copyOf(namesWithoutNull, size);
-        return namesWithoutNull;
+        return itemName;
     }
 
     /**
@@ -80,16 +88,70 @@ public class Tracker {
      */
 
     public Item findById(String id) {
-        Item[] item = new Item[position];
         Item itemId = null;
         for (int index = 0; index < position; index++) {
             itemId = items[index];
-            if (itemId.getId() != null && itemId.getId().equals(id)) {
+            if (itemId != null && itemId.getId().equals(id)) {
+                System.out.println("Name " + itemId.getName());
                 break;
+            } else {
+                itemId = null;
             }
         }
         return itemId;
     }
+
+    /**
+     * method find index item with declared id
+     *
+     * @param item
+     */
+
+    public int findIndex(Item item) {
+        int itemIndex = 0;
+        for (int index = 0; index < position; index++) {
+            Item tmpItem = items[index];
+            if (tmpItem != null && tmpItem.getId().equals(item.getId()))
+            itemIndex = index;
+        }
+        return itemIndex;
+    }
+
+    /**
+     * method delete item with declared id
+     *
+     * @param id
+     */
+
+    public void deleteItem(String id) {
+        Item item = findById(id);
+        if (item != null) {
+            int tmpIndex = findIndex(item);
+            items[tmpIndex] = null;
+            System.out.println("Item delete successful");
+        } else {
+            System.out.println("Item not found");
+        }
+    }
+
+    /**
+     * method replace item with declared id
+     *
+     * @param id
+     */
+
+    public void replaceItem(String id, String newItem) {
+        boolean result = false;
+        Item item = findById(id);
+        if (item != null) {
+            item.setName(newItem);
+            System.out.println("Item replace successful");
+            result = true;
+        } else {
+            System.out.println("Item not found");
+        }
+    }
 }
+
 
 
