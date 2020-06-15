@@ -69,17 +69,20 @@ public class Tracker {
      * @return items with declared key
      */
 
-    public Item findByName(String key) {
-        Item[] item = new Item[position];
-        Item itemName = null;
-        for (int index = 0; index < position; index++) {
-            itemName = items[index];
-            if (itemName != null && itemName.getName().equals(key)) {
-                break;
+    public Item[] findByName(String key) {
+        int size = 0;
+        Item[] itemFind = findAll();
+        for (int index = 0; index < itemFind.length; index++) {
+            Item item = itemFind[index];
+            if (item != null && item.getName().equals(key)) {
+                itemFind[size] = item;
+                size++;
             }
         }
-        return itemName;
+        itemFind = Arrays.copyOf(itemFind, size);
+        return itemFind;
     }
+
 
     /**
      * method get item with declared id
@@ -88,17 +91,16 @@ public class Tracker {
      */
 
     public Item findById(String id) {
-        Item itemId = null;
+        Item item = null;
         for (int index = 0; index < position; index++) {
-            itemId = items[index];
-            if (itemId != null && itemId.getId().equals(id)) {
-                System.out.println("Name " + itemId.getName());
+            item = items[index];
+            if (item != null && item.getId().equals(id)) {
                 break;
             } else {
-                itemId = null;
+                item = null;
             }
         }
-        return itemId;
+        return item;
     }
 
     /**
@@ -107,7 +109,7 @@ public class Tracker {
      * @param item
      */
 
-    public int findIndex(Item item) {
+    private int findIndex(Item item) {
         int itemIndex = 0;
         for (int index = 0; index < position; index++) {
             Item tmpItem = items[index];

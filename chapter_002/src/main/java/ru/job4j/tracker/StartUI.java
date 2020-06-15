@@ -3,9 +3,9 @@ package ru.job4j.tracker;
 import java.util.Scanner;
 
 /**
- * Class user interface for tracker
+ * Class user interface for tracker Ver.2
  * @author Aleksei Usov
- * @since 02/06/2020
+ * @since 15/06/2020
  */
 
 public class StartUI {
@@ -34,9 +34,9 @@ public class StartUI {
                     tracker.add(item);
                 } else if (select == 1) {
                     System.out.println("=== Show all tracker items ===");
-                    Item[] list = tracker.findAll();
-                    for (int i = 0; i < list.length; i++) {
-                        System.out.println("id: " + list[i].getId() + " " + list[i].getName());
+                    Item[] array = tracker.findAll();
+                    for (Item item : array) {
+                        System.out.println(item);
                     }
                 } else if (select == 2) {
                     System.out.println("=== Replace item ===");
@@ -59,8 +59,10 @@ public class StartUI {
                     System.out.println("=== Find item by ID ===");
                     System.out.print("Enter item ID: ");
                     String id = scanner.nextLine();
-                    if (tracker.findById(id) != null) {
+                    Item item = tracker.findById(id);
+                    if (item != null) {
                         System.out.println("Item Was found");
+                        System.out.println(item);
                     } else {
                         System.out.println("Item Not found");
                     }
@@ -68,7 +70,15 @@ public class StartUI {
                     System.out.println("=== Find item by name ===");
                     System.out.print("Enter item name: ");
                     String name = scanner.nextLine();
-                    System.out.println("Item Id: " + tracker.findByName(name).getId());
+                    Item[] array = tracker.findByName(name);
+                    if (array.length > 0) {
+                        System.out.println("Items Was found");
+                        for (Item item : array) {
+                            System.out.println(item);
+                        }
+                    } else {
+                        System.out.println("Items Not found");
+                    }
                 } else if (select == 6) {
                     run = false;
                 }
