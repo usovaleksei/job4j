@@ -25,6 +25,7 @@ public class StartUI {
                 isValid = validate(select);
                 if (!isValid) {
                     System.out.println("Enter correct value from 0 to 6");
+                    continue;
                 }
                 if (select == 0) {
                     System.out.println("=== Create a new item ===");
@@ -42,10 +43,10 @@ public class StartUI {
                     System.out.println("=== Replace item ===");
                     System.out.print("Enter id item to replace ");
                     String id = scanner.nextLine();
-                    if (tracker.findById(id) != null) {
-                        System.out.print("Enter new item name ");
-                        String itemName = scanner.nextLine();
-                        tracker.replaceItem(id, itemName);
+                    System.out.print("Enter new item name ");
+                    String itemName = scanner.nextLine();
+                    if (tracker.replaceItem(id, itemName)) {
+                        System.out.println("Item replace successful");
                     } else {
                         System.out.println("Item Not found");
                     }
@@ -53,8 +54,11 @@ public class StartUI {
                     System.out.println("=== Delete item ===");
                     System.out.print("Enter id item to delete ");
                     String id = scanner.nextLine();
-                    tracker.deleteItem(id);
-
+                    if (tracker.deleteItem(id) != null) {
+                    System.out.println("Item delete successful");
+                    } else {
+                        System.out.println("Item not found");
+                    }
                 } else if (select == 4) {
                     System.out.println("=== Find item by ID ===");
                     System.out.print("Enter item ID: ");

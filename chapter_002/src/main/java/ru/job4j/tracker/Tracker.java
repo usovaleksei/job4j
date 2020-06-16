@@ -125,15 +125,13 @@ public class Tracker {
      * @param id
      */
 
-    public void deleteItem(String id) {
+    public Item deleteItem(String id) {
         Item item = findById(id);
         if (item != null) {
             int tmpIndex = findIndex(item);
             items[tmpIndex] = null;
-            System.out.println("Item delete successful");
-        } else {
-            System.out.println("Item not found");
         }
+        return item;
     }
 
     /**
@@ -142,16 +140,14 @@ public class Tracker {
      * @param id
      */
 
-    public void replaceItem(String id, String newItem) {
+    public boolean replaceItem(String id, String newItem) {
         boolean result = false;
         Item item = findById(id);
         if (item != null) {
             item.setName(newItem);
-            System.out.println("Item replace successful");
             result = true;
-        } else {
-            System.out.println("Item not found");
         }
+        return result;
     }
 }
 
