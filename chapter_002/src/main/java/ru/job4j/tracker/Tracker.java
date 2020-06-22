@@ -49,17 +49,7 @@ public class Tracker {
      * @return array of all items without null
      */
     public Item[] findAll() {
-        int size = 0;
-        Item[] itemsWithoutNull = new Item[position];
-        for (int index = 0; index < position; index++) {
-            Item item = items[index];
-            if (item != null ) {
-                itemsWithoutNull[size] = item;
-                size++;
-            }
-        }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        return itemsWithoutNull;
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -71,7 +61,7 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         int size = 0;
-        Item[] itemFind = findAll();
+        Item[] itemFind = new Item[position];
         for (int index = 0; index < itemFind.length; index++) {
             Item item = itemFind[index];
             if (item != null && item.getName().equals(key)) {
@@ -110,11 +100,13 @@ public class Tracker {
      */
 
     private int findIndex(Item item) {
-        int itemIndex = 0;
+        int itemIndex = -1;
         for (int index = 0; index < position; index++) {
             Item tmpItem = items[index];
-            if (tmpItem != null && tmpItem.getId().equals(item.getId()))
-            itemIndex = index;
+            if (tmpItem != null && tmpItem.getId().equals(item.getId())) {
+                itemIndex = index;
+                break;
+            }
         }
         return itemIndex;
     }
@@ -125,13 +117,17 @@ public class Tracker {
      * @param id
      */
 
-    public Item deleteItem(String id) {
+    public boolean deleteItem(String id) {
+        boolean done = false;
         Item item = findById(id);
         if (item != null) {
             int tmpIndex = findIndex(item);
             items[tmpIndex] = null;
+            System.arraycopy(items, tmpIndex + 1, items, tmpIndex, position - 1);
+            position--;
+            done = true;
         }
-        return item;
+        return done;
     }
 
     /**
@@ -140,12 +136,15 @@ public class Tracker {
      * @param id
      */
 
-    public boolean replaceItem(String id, String newItem) {
+    public boolean replaceItem(String id, Item newItem) {
         boolean result = false;
-        Item item = findById(id);
-        if (item != null) {
-            item.setName(newItem);
-            result = true;
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
+                items[i] = newItem;
+                items[i].setId(id);
+                result = true;
+                break;
+            }
         }
         return result;
     }

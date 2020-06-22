@@ -45,7 +45,7 @@ public class StartUI {
                     String id = scanner.nextLine();
                     System.out.print("Enter new item name ");
                     String itemName = scanner.nextLine();
-                    if (tracker.replaceItem(id, itemName)) {
+                    if (tracker.replaceItem(id, new Item(itemName))) {
                         System.out.println("Item replace successful");
                     } else {
                         System.out.println("Item Not found");
@@ -54,8 +54,8 @@ public class StartUI {
                     System.out.println("=== Delete item ===");
                     System.out.print("Enter id item to delete ");
                     String id = scanner.nextLine();
-                    if (tracker.deleteItem(id) != null) {
-                    System.out.println("Item delete successful");
+                    if (tracker.deleteItem(id)) {
+                        System.out.println("Item delete successful");
                     } else {
                         System.out.println("Item not found");
                     }
