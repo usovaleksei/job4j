@@ -63,7 +63,7 @@ public class Tracker {
         int size = 0;
         Item[] itemFind = new Item[position];
         for (int index = 0; index < itemFind.length; index++) {
-            Item item = itemFind[index];
+            Item item = items[index];
             if (item != null && item.getName().equals(key)) {
                 itemFind[size] = item;
                 size++;
@@ -83,11 +83,9 @@ public class Tracker {
     public Item findById(String id) {
         Item item = null;
         for (int index = 0; index < position; index++) {
-            item = items[index];
-            if (item != null && item.getId().equals(id)) {
+            if (items[index].getId().equals(id)) {
+                item = items[index];
                 break;
-            } else {
-                item = null;
             }
         }
         return item;
@@ -96,14 +94,14 @@ public class Tracker {
     /**
      * method find index item with declared id
      *
-     * @param item
+     * @param id
      */
 
-    private int findIndex(Item item) {
+    private int findIndex(String id) {
         int itemIndex = -1;
         for (int index = 0; index < position; index++) {
             Item tmpItem = items[index];
-            if (tmpItem != null && tmpItem.getId().equals(item.getId())) {
+            if (tmpItem != null && tmpItem.getId().equals(id)) {
                 itemIndex = index;
                 break;
             }
@@ -119,9 +117,8 @@ public class Tracker {
 
     public boolean deleteItem(String id) {
         boolean done = false;
-        Item item = findById(id);
-        if (item != null) {
-            int tmpIndex = findIndex(item);
+            int tmpIndex = findIndex(id);
+            if (tmpIndex != - 1) {
             items[tmpIndex] = null;
             System.arraycopy(items, tmpIndex + 1, items, tmpIndex, position - 1);
             position--;
