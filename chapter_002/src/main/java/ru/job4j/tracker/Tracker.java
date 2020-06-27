@@ -135,13 +135,11 @@ public class Tracker {
 
     public boolean replaceItem(String id, Item newItem) {
         boolean result = false;
-        for (int i = 0; i < position; i++) {
-            if (items[i].getId().equals(id)) {
-                items[i] = newItem;
-                items[i].setId(id);
-                result = true;
-                break;
-            }
+        int tmpIndex = findIndex(id);
+        if (tmpIndex != -1) {
+            items[tmpIndex] = newItem;
+            items[tmpIndex].setId(id);
+            result = true;
         }
         return result;
     }
