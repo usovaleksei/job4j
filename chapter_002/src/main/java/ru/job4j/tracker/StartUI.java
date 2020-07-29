@@ -1,8 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Class user interface for tracker Ver.4
  * @author Aleksei Usov
@@ -60,6 +57,5 @@ public class StartUI {
                 new ExitAction()
         };
         new StartUI().init(input, tracker, actions);
-        List<String> list = new ArrayList<>();
     }
 }
