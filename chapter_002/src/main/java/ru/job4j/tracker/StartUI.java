@@ -18,13 +18,11 @@ public class StartUI {
      */
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
-        boolean isValid;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
-            isValid = validate(select);
-            if (!isValid) {
-                out.println("Enter correct value from 0 to 6");
+            if (select < 0 || select >= actions.length) {
+                out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
                 continue;
             }
                 UserAction action = actions[select];
@@ -42,16 +40,9 @@ public class StartUI {
         }
     }
 
-    /**
-     * validate menu value
-     */
-    private boolean validate(int value) {
-        return value >= 0 && value <= 6;
-    }
-
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
