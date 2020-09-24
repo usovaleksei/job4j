@@ -1,8 +1,6 @@
 package ru.job4j.collections;
 
 import org.junit.Test;
-import ru.job4j.collection.Person;
-import ru.job4j.collection.PhoneDictionary;
 
 import java.util.ArrayList;
 
