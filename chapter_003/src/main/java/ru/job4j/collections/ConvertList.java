@@ -11,8 +11,8 @@ import java.util.List;
 public class ConvertList {
     public static List<Integer> convert(List<int[]> list) {
         List<Integer> rsl = new ArrayList<>();
-        for (int[] OneArray: list) {
-            for (Integer element: OneArray) {
+        for (int[] oneArray: list) {
+            for (Integer element: oneArray) {
                 rsl.add(element);
             }
         }
