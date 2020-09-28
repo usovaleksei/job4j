@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -11,16 +12,9 @@ import java.util.Random;
 public class Tracker {
 
     /**
-     * array for storing items
+     * collection for storing items
      */
-    private final Item[] items = new Item[100];
-
-
-    /**
-     * cell pointer for a new item
-     */
-    int position = 0;
-
+    private List<Item> items = new ArrayList<>();
 
     /**
      * method adding a item to the storing
@@ -29,7 +23,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(generateId());
-        this.items[position++] = item;
+        this.items.add(item);
         return item;
     }
 
@@ -48,8 +42,8 @@ public class Tracker {
      *
      * @return array of all items without null
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+    public List<Item> findAll() {
+        return this.items;
     }
 
     /**
@@ -59,20 +53,14 @@ public class Tracker {
      * @return items with declared key
      */
 
-    public Item[] findByName(String key) {
-        int size = 0;
-        Item[] itemFind = new Item[position];
-        for (int index = 0; index < itemFind.length; index++) {
-            Item item = items[index];
-            if (item != null && item.getName().equals(key)) {
-                itemFind[size] = item;
-                size++;
-            }
+    public List<Item> findByName(String key) {
+        List<Item> findItems = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item.getName().equals(key))
+                findItems.add(item);
         }
-        itemFind = Arrays.copyOf(itemFind, size);
-        return itemFind;
+        return findItems;
     }
-
 
     /**
      * method get item with declared id
@@ -81,32 +69,14 @@ public class Tracker {
      */
 
     public Item findById(String id) {
-        Item item = null;
-        for (int index = 0; index < position; index++) {
-            if (items[index].getId().equals(id)) {
-                item = items[index];
+        Item findIdItem = null;
+        for (Item item : this.items) {
+            if (item.getId().equals(id)) {
+                findIdItem = item;
                 break;
             }
         }
-        return item;
-    }
-
-    /**
-     * method find index item with declared id
-     *
-     * @param id
-     */
-
-    private int findIndex(String id) {
-        int itemIndex = -1;
-        for (int index = 0; index < position; index++) {
-            Item tmpItem = items[index];
-            if (tmpItem != null && tmpItem.getId().equals(id)) {
-                itemIndex = index;
-                break;
-            }
-        }
-        return itemIndex;
+        return findIdItem;
     }
 
     /**
@@ -117,11 +87,9 @@ public class Tracker {
 
     public boolean deleteItem(String id) {
         boolean done = false;
-            int tmpIndex = findIndex(id);
-            if (tmpIndex != - 1) {
-            items[tmpIndex] = null;
-            System.arraycopy(items, tmpIndex + 1, items, tmpIndex, position - 1);
-            position--;
+        Item item = this.findById(id);
+        if (item != null) {
+            this.items.remove(item);
             done = true;
         }
         return done;
@@ -135,10 +103,10 @@ public class Tracker {
 
     public boolean replaceItem(String id, Item newItem) {
         boolean result = false;
-        int tmpIndex = findIndex(id);
-        if (tmpIndex != -1) {
-            items[tmpIndex] = newItem;
-            items[tmpIndex].setId(id);
+        Item item = this.findById(id);
+        if (item != null) {
+            this.items.set(this.items.indexOf(item), newItem);
+            newItem.setId(id);
             result = true;
         }
         return result;
