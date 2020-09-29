@@ -5,6 +5,7 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -32,9 +33,7 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
         List<Item> expected = new ArrayList<>();
-        expected.add(item);
-        expected.add(item1);
-        expected.add(item2);
+        Collections.addAll(expected, item, item1, item2);
         List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
     }
@@ -50,8 +49,7 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item4);
         List<Item> expected = new ArrayList<>();
-        expected.add(item);
-        expected.add(item4);
+        Collections.addAll(expected, item, item4);
         List<Item> result = tracker.findByName("first item");
         assertThat(result, is(expected));
     }
