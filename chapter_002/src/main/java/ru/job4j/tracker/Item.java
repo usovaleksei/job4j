@@ -3,10 +3,10 @@ package ru.job4j.tracker;
 /**
  * Class data model tracker item
  * @author Aleksei Usov
- * @since 28/04/2020
+ * @since 30/09/2020
  */
 
-public class Item {
+public class Item implements Comparable<Item>{
     private String id;
     private String name;
 
@@ -34,5 +34,15 @@ public class Item {
     public String toString() {
         return "item Id: " + id +
                 ", item Name: " + name;
+    }
+
+    /**
+     * Method sorted items to ascending
+     * @param another item
+     */
+
+    @Override
+    public int compareTo(Item another) {
+        return this.name.compareTo(another.name);
     }
 }
