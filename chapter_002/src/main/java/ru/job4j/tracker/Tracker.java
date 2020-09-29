@@ -66,6 +66,7 @@ public class Tracker {
      * method get item with declared id
      *
      * @param id
+     * @return item with declared id
      */
 
     public Item findById(String id) {
@@ -80,6 +81,23 @@ public class Tracker {
     }
 
     /**
+     * method for search item index with declared id
+     *
+     * @param id
+     * @return item index with declared id
+     */
+
+    public int findIndex(String id) {
+        int findIndexItem = - 1;
+        for (Item item : this.items) {
+            if (item.getId().equals(id)) {
+                findIndexItem = items.indexOf(item);
+            }
+        }
+        return findIndexItem;
+    }
+
+    /**
      * method delete item with declared id
      *
      * @param id
@@ -87,9 +105,9 @@ public class Tracker {
 
     public boolean deleteItem(String id) {
         boolean done = false;
-        Item item = this.findById(id);
-        if (item != null) {
-            this.items.remove(item);
+        int index = this.findIndex(id);
+        if (index != - 1) {
+            this.items.remove(index);
             done = true;
         }
         return done;
@@ -103,9 +121,9 @@ public class Tracker {
 
     public boolean replaceItem(String id, Item newItem) {
         boolean result = false;
-        Item item = this.findById(id);
-        if (item != null) {
-            this.items.set(this.items.indexOf(item), newItem);
+        int index = this.findIndex(id);
+        if (index != - 1) {
+            this.items.set(index, newItem);
             newItem.setId(id);
             result = true;
         }
