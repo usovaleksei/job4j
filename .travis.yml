@@ -19,7 +19,7 @@ notifications:
     on_success: never # default: change
     on_failure: always # defa,ult: always
 
-# Ключ к сервису codecov.io
+# Ключ доступа к сервису codecov.io
 env:
   global:
     - CODECOV_TOKEN="430fe897-58da-4c3e-85d3-a04477ea3b5e"
