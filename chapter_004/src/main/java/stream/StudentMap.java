@@ -21,10 +21,10 @@ public class StudentMap {
     public Map<String, Student> convertListToMap (List<Student> students) {
         Map<String, Student> studentsMap = students
                 .stream()
-                .distinct()
                 .collect(Collectors.toMap(
                         s -> s.getSurname(),
-                        o -> o
+                        o -> o,
+                        (s1, s2) -> s1
                 ));
         //studentsMap.forEach((k, v) -> System.out.println("Key: " + k + " Value: " + v));
         return studentsMap;
