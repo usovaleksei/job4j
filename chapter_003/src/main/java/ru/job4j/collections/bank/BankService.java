@@ -39,14 +39,10 @@ public class BankService {
      * @return username
      */
     public User findByPassport(String passport) {
-        User result = null;
-        Set<User> userList = this.users.keySet();
-        for (User user: userList) {
-            if (user.getPassport().equals(passport))
-                result = user;
-                break;
-        }
-        return result;
+
+        return this.users.keySet().stream()
+                                  .filter(u -> u.getPassport().equals(passport))
+                                  .findFirst().orElse(null);
     }
 
     /**
@@ -59,13 +55,9 @@ public class BankService {
         Account result = null;
         User user = findByPassport(passport);
         if (user != null) {
-            List<Account> userAccounts = this.users.get(user);
-                for (Account account : userAccounts) {
-                    if (account.getRequisite().equals(requisite)) {
-                        result = account;
-                        break;
-                    }
-                }
+            result = this.users.get(user).stream()
+                                         .filter(r -> r.getRequisite().equals(requisite))
+                                         .findFirst().orElse(null);
             }
         return result;
     }
