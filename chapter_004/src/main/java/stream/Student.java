@@ -2,12 +2,12 @@ package stream;
 
 import java.util.Objects;
 
-public class Student {
+public class Student implements Comparable<Student> {
 
     private int score;
     private String surname;
 
-    public Student(int score, String surname) {
+    public Student(String surname, int score) {
         this.score = score;
         this.surname = surname;
     }
@@ -20,16 +20,23 @@ public class Student {
         return surname;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return surname.equals(student.surname);
+        return score == student.score &&
+                surname.equals(student.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(surname);
+        return Objects.hash(score, surname);
+    }
+
+    @Override
+    public int compareTo(Student student) {
+        return this.score - student.getScore();
     }
 }

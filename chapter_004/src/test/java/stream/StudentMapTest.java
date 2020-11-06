@@ -19,11 +19,11 @@ public class StudentMapTest {
     @Test
     public void whenListToMapUniqueSurname() {
         List<Student> students = new ArrayList<>();
-        Student studentOne = new Student(50, "Surname1");
-        Student studentTwo = new Student(70, "Surname2");
-        Student studentThree = new Student(60, "Surname3");
-        Student studentFour = new Student(90, "Surname4");
-        Student studentFive = new Student(20, "Surname5");
+        Student studentOne = new Student("Surname1", 50);
+        Student studentTwo = new Student("Surname2", 70);
+        Student studentThree = new Student("Surname3", 60);
+        Student studentFour = new Student("Surname4", 90);
+        Student studentFive = new Student("Surname5", 20);
         students.add(studentOne);
         students.add(studentTwo);
         students.add(studentThree);
@@ -47,11 +47,11 @@ public class StudentMapTest {
     @Test
     public void whenListToMapRepeatSurname() {
         List<Student> students = new ArrayList<>();
-        Student studentOne = new Student(50, "Surname1");
-        Student studentTwo = new Student(70, "Surname2");
-        Student studentThree = new Student(60, "Surname2");
-        Student studentFour = new Student(90, "Surname4");
-        Student studentFive = new Student(20, "Surname2");
+        Student studentOne = new Student("Surname1", 50);
+        Student studentTwo = new Student("Surname2", 70);
+        Student studentThree = new Student("Surname2", 60);
+        Student studentFour = new Student("Surname4", 90);
+        Student studentFive = new Student("Surname4", 20);
         students.add(studentOne);
         students.add(studentTwo);
         students.add(studentThree);
