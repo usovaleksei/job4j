@@ -3,7 +3,6 @@ package stream;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,12 +30,12 @@ public class StudentMapTest {
         students.add(studentFive);
         StudentMap studentMap = new StudentMap();
         Map<String, Student> result = studentMap.convertListToMap(students);
-        Map<String, Student> expected = new HashMap<>();
-        expected.put("Surname1", studentOne);
-        expected.put("Surname2", studentTwo);
-        expected.put("Surname3", studentThree);
-        expected.put("Surname4", studentFour);
-        expected.put("Surname5", studentFive);
+        Map<String, Student> expected = Map.of(
+                "Surname1", studentOne,
+                "Surname2", studentTwo,
+                "Surname3", studentThree,
+                "Surname4", studentFour,
+                "Surname5", studentFive);
         assertThat(result, is(expected));
     }
 
@@ -59,11 +58,10 @@ public class StudentMapTest {
         students.add(studentFive);
         StudentMap studentMap = new StudentMap();
         Map<String, Student> result = studentMap.convertListToMap(students);
-        Map<String, Student> expected = new HashMap<>();
-        expected.put("Surname1", studentOne);
-        expected.put("Surname2", studentTwo);
-        expected.put("Surname4", studentFour);
+        Map<String, Student> expected = Map.of(
+                "Surname1", studentOne,
+                "Surname2", studentTwo,
+                "Surname4", studentFour);
         assertThat(result, is(expected));
     }
-
 }

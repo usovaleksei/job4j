@@ -25,10 +25,10 @@ public class ProfilesTest {
     public void whenCollectAddressToList() {
         Profiles profiles = new Profiles();
         List<Address> result = profiles.collect(userList);
-        List<Address> expected = new ArrayList<>();
-        expected.add(new Address("Balashiha", "Sverdlova", 21, 7));
-        expected.add(new Address("Moscow", "Zvezdnaya", 10, 15));
-        expected.add(new Address("Moscow", "Planetnaya", 7, 208));
+        List<Address> expected = List.of(
+                new Address("Balashiha", "Sverdlova", 21, 7),
+                new Address("Moscow", "Zvezdnaya", 10, 15),
+                new Address("Moscow", "Planetnaya", 7, 208));
         assertThat(result, is(expected));
     }
 }
