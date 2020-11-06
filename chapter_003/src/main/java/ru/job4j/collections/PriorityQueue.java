@@ -10,8 +10,8 @@ public class PriorityQueue {
      * @param task
      */
     public void put(Task task) {
-        int index = 0;
-        for (Task element:
+        var index = 0;
+        for (var element:
              tasks) {
             if (element.getPriority() > task.getPriority()) {
                 break;
