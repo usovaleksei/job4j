@@ -1,6 +1,5 @@
 package stream;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +13,7 @@ public class FilterPositiveNumbers {
     public static void main(String[] args) {
 
         //create number list
-        List<Integer> numbers = Arrays.asList(1, 7, -3, 5, -15, 8);
+        List<Integer> numbers = List.of(1, 7, -3, 5, -15, 8);
 
         //create stream from list and filter positive numbers
         List<Integer> positiveNumbers =
