@@ -9,10 +9,10 @@ public class TrackerSingletonSecond {
 
     private static TrackerSingletonSecond instance;
 
-    private Tracker tracker;
+    private MemTracker memTracker;
 
     private TrackerSingletonSecond() {
-        this.tracker = new Tracker();
+        this.memTracker = new MemTracker();
     }
 
     public static TrackerSingletonSecond getInstance() {
@@ -22,7 +22,7 @@ public class TrackerSingletonSecond {
         return instance;
     }
 
-    public Tracker getTracker() {
-        return tracker;
+    public MemTracker getTracker() {
+        return memTracker;
     }
 }

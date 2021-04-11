@@ -9,18 +9,18 @@ public class TrackerSingletonThird {
 
     private static final TrackerSingletonThird INSTANCE = new TrackerSingletonThird();
 
-    private Tracker tracker;
+    private MemTracker memTracker;
 
     private TrackerSingletonThird() {
-        this.tracker = new Tracker();
+        this.memTracker = new MemTracker();
     }
 
     public static TrackerSingletonThird getInstance() {
         return INSTANCE;
     }
 
-    public Tracker getTracker() {
-        return tracker;
+    public MemTracker getTracker() {
+        return memTracker;
     }
 /*private static final Tracker INSTANCE = new Tracker();
 

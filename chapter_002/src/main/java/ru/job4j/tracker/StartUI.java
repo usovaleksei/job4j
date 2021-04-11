@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,10 @@ import java.util.List;
  */
 
 public class StartUI {
+
     private final Output out;
+
+    private final Logger LOG = LoggerFactory.getLogger(SqlTracker.class.getName());
 
     public StartUI(Output out) {
         this.out = out;
@@ -19,7 +25,7 @@ public class StartUI {
     /**
      * for select item of menu
      */
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store memTracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -29,7 +35,7 @@ public class StartUI {
                 continue;
             }
                 UserAction action = actions.get(select);
-                run = action.execute(input, tracker);
+                run = action.execute(input, memTracker);
         }
     }
 
@@ -46,7 +52,8 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
+        Store memTracker = new SqlTracker();
+        memTracker.init();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(output));
         actions.add(new ShowAllAction(output));
@@ -55,6 +62,6 @@ public class StartUI {
         actions.add(new FindByIdAction(output));
         actions.add(new FindByNameAction(output));
         actions.add(new ExitAction(output));
-        new StartUI(output).init(input, tracker, actions);
+        new StartUI(output).init(input, memTracker, actions);
     }
 }

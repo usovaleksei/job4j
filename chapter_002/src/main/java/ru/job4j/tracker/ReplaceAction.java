@@ -13,11 +13,11 @@ public class ReplaceAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         out.println("=== Edit item ===");
-        String id = input.askStr("Enter id item to replace ");
+        int id = input.askInt("Enter id item to replace ");
         String itemName = input.askStr("Enter new item name ");
-        if (tracker.replaceItem(id, new Item(itemName))) {
+        if (memTracker.replace(id, new Item(itemName))) {
             out.println("Item replace successful");
         } else {
             out.println("Item not found");

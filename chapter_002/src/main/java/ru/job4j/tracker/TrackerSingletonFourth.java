@@ -7,10 +7,10 @@ package ru.job4j.tracker;
 
 public class TrackerSingletonFourth {
 
-    private Tracker tracker;
+    private MemTracker memTracker;
 
     private TrackerSingletonFourth() {
-        this.tracker = new Tracker();
+        this.memTracker = new MemTracker();
     }
 
     public static TrackerSingletonFourth getInstance() {
@@ -21,7 +21,7 @@ public class TrackerSingletonFourth {
         private static final TrackerSingletonFourth INSTANCE = new TrackerSingletonFourth();
     }
 
-    public Tracker getTracker() {
-        return tracker;
+    public MemTracker getTracker() {
+        return memTracker;
     }
 }

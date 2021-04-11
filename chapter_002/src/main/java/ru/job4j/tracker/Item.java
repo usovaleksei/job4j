@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.Objects;
+
 /**
  * Class data model tracker item
  * @author Aleksei Usov
@@ -7,18 +9,27 @@ package ru.job4j.tracker;
  */
 
 public class Item implements Comparable<Item>{
-    private String id;
+    private int id;
     private String name;
 
     public Item(String name) {
         this.name = name;
     }
 
-    public String getId() {
+    public Item(int id, String name) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public Item(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -34,6 +45,20 @@ public class Item implements Comparable<Item>{
     public String toString() {
         return "item Id: " + id +
                 ", item Name: " + name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return id == item.id &&
+                Objects.equals(name, item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     /**

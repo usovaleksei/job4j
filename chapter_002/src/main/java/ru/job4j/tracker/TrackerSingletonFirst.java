@@ -9,13 +9,13 @@ public enum TrackerSingletonFirst {
 
     INSTANCE;
 
-    private Tracker tracker;
+    private MemTracker memTracker;
 
     private TrackerSingletonFirst() {
-        this.tracker = new Tracker();
+        this.memTracker = new MemTracker();
     }
 
-    public Tracker getTracker() {
-        return tracker;
+    public MemTracker getTracker() {
+        return memTracker;
     }
 }
