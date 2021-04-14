@@ -10,9 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class SqlTracker implements Store {
+public class SqlTracker implements Store, AutoCloseable {
 
     private Connection connection;
+
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
 
     private final Logger LOG = LoggerFactory.getLogger(SqlTracker.class.getName());
 

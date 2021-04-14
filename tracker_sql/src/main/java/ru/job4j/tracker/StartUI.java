@@ -50,7 +50,7 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Output output = new ConsoleOutput();
+       /* Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
         Store memTracker = new SqlTracker();
         memTracker.init();
@@ -62,6 +62,6 @@ public class StartUI {
         actions.add(new FindByIdAction(output));
         actions.add(new FindByNameAction(output));
         actions.add(new ExitAction(output));
-        new StartUI(output).init(input, memTracker, actions);
+        new StartUI(output).init(input, memTracker, actions);*/
     }
 }
