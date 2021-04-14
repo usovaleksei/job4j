@@ -2,8 +2,7 @@ package ru.job4j.oop.tracker;
 
 import org.junit.Test;
 import ru.job4j.tracker.Item;
-import ru.job4j.tracker.SqlTracker;
-import ru.job4j.tracker.Store;
+import ru.job4j.tracker.Tracker;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +16,7 @@ public class TrackerTest {
     //test to adding new item to tracker
     @Test
     public void WhenAddNewItem () {
-        Store tracker = new SqlTracker();
+        Tracker tracker = new Tracker();
         Item item = new Item("first item");
         Item result = tracker.add(item);
         assertThat(result.getName(), is(item.getName()));
@@ -26,7 +25,7 @@ public class TrackerTest {
     //test to display all items from storing
     @Test
     public void WhenAddNewItemThenFindAll() {
-        Store tracker = new SqlTracker();
+        Tracker tracker = new Tracker();
         Item item = new Item("first item");
         Item item1 = new Item(null);
         Item item2 = new Item("second item");
@@ -42,7 +41,7 @@ public class TrackerTest {
     //test to display all items according key
     @Test
     public void WhenAddNewItemThenFindByName() {
-        Store tracker = new SqlTracker();
+        Tracker tracker = new Tracker();
         Item item = new Item("first item");
         Item item2 = new Item("second item");
         Item item4 = new Item("first item");
@@ -58,7 +57,7 @@ public class TrackerTest {
     //test to display all items according Id
     @Test
     public void WhenAddNewItemThenFindById() {
-        Store tracker = new SqlTracker();
+        Tracker tracker = new Tracker();
         Item item = new Item("first item");
         Item item1 = new Item("second item");
         tracker.add(item);

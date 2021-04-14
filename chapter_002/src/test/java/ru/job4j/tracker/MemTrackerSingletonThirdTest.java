@@ -9,9 +9,9 @@ import static org.junit.Assert.assertThat;
 public class MemTrackerSingletonThirdTest {
     @Test
     public void whenSingletonWithStaticFinalField() {
-        MemTracker memTrackerOne = TrackerSingletonThird.getInstance().getTracker();
-        MemTracker memTrackerTwo = TrackerSingletonThird.getInstance().getTracker();
-        assertThat(memTrackerOne, is(memTrackerTwo));
-        assertNotNull(memTrackerOne);
+        Tracker trackerOne = TrackerSingletonThird.getInstance().getTracker();
+        Tracker trackerTwo = TrackerSingletonThird.getInstance().getTracker();
+        assertThat(trackerOne, is(trackerTwo));
+        assertNotNull(trackerOne);
     }
 }

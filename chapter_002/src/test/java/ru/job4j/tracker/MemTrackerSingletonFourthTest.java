@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 public class MemTrackerSingletonFourthTest {
     @Test
     public void whenSingletonWithInnerClass() {
-        MemTracker memTrackerOne = TrackerSingletonFourth.getInstance().getTracker();
-        MemTracker memTrackerTwo = TrackerSingletonFourth.getInstance().getTracker();
-        assertThat(memTrackerOne, is(memTrackerTwo));
+        Tracker trackerOne = TrackerSingletonFourth.getInstance().getTracker();
+        Tracker trackerTwo = TrackerSingletonFourth.getInstance().getTracker();
+        assertThat(trackerOne, is(trackerTwo));
     }
 }

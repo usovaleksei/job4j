@@ -10,8 +10,8 @@ public class MemTrackerSingletonFirstTest {
     @Test
     public void whenSingletonWithEnum() {
 
-        MemTracker memTrackerSingltoneOne = TrackerSingletonFirst.INSTANCE.getTracker();
-        MemTracker memTrackerSingltoneTwo = TrackerSingletonFirst.INSTANCE.getTracker();
-        assertThat(memTrackerSingltoneOne, is(memTrackerSingltoneTwo));
+        Tracker trackerSingltoneOne = TrackerSingletonFirst.INSTANCE.getTracker();
+        Tracker trackerSingltoneTwo = TrackerSingletonFirst.INSTANCE.getTracker();
+        assertThat(trackerSingltoneOne, is(trackerSingltoneTwo));
     }
 }

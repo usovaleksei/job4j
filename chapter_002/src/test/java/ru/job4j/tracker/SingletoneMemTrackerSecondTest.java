@@ -11,9 +11,9 @@ public class SingletoneMemTrackerSecondTest {
     @Test
     public void whenSingletonWithStaticField() {
 
-        MemTracker memTrackerOne = TrackerSingletonSecond.getInstance().getTracker();
-        MemTracker memTrackerTwo = TrackerSingletonSecond.getInstance().getTracker();
-        assertThat(memTrackerOne, is(memTrackerTwo));
-        assertNotNull(memTrackerOne);
+        Tracker trackerOne = TrackerSingletonSecond.getInstance().getTracker();
+        Tracker trackerTwo = TrackerSingletonSecond.getInstance().getTracker();
+        assertThat(trackerOne, is(trackerTwo));
+        assertNotNull(trackerOne);
     }
 }
