@@ -17,7 +17,8 @@ public class ReplaceAction implements UserAction {
         out.println("=== Edit item ===");
         int id = input.askInt("Enter id item to replace ");
         String itemName = input.askStr("Enter new item name ");
-        if (memTracker.replace(id, new Item(itemName))) {
+        Item item = new Item(itemName);
+        if (memTracker.replace(id, item)) {
             out.println("Item replace successful");
         } else {
             out.println("Item not found");

@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Aleksei Usov
  */
 
-public class MemTracker {
+public class MemTracker implements Store {
 
     /**
      * collection for storing items
@@ -17,14 +17,53 @@ public class MemTracker {
     private List<Item> items = new ArrayList<>();
 
     /**
+     * starting index
+     */
+    private int id = 1;
+
+    /**
      * method adding a item to the storing
      *
      * @param item - new item
      */
     public Item add(Item item) {
-        item.setId(generateId());
+        item.setId(this.id++);
         this.items.add(item);
         return item;
+    }
+
+
+    /**
+     * method replace item with declared id
+     *
+     * @param id - item id
+     */
+    @Override
+    public boolean replace(int id, Item item) {
+        boolean result = false;
+        int index = this.findIndex(id);
+        if (index != - 1) {
+            this.items.set(index, item);
+            item.setId(id);
+            result = true;
+        }
+        return result;
+    }
+
+    /**
+     * method delete item with declared id
+     *
+     * @param id - item id
+     */
+    @Override
+    public boolean delete(int id) {
+        boolean done = false;
+        int index = this.findIndex(id);
+        if (index != - 1) {
+            this.items.remove(index);
+            done = true;
+        }
+        return done;
     }
 
     /**
@@ -34,8 +73,8 @@ public class MemTracker {
      */
     private int generateId() {
         Random rm = new Random();
-        Long rsl = (rm.nextInt() + System.currentTimeMillis());
-        return rsl.intValue();
+        long rsl = (rm.nextInt() + System.currentTimeMillis());
+        return (int) rsl;
     }
 
     /**
@@ -50,7 +89,7 @@ public class MemTracker {
     /**
      * method get items with declared key
      *
-     * @param key
+     * @param key key for search
      * @return items with declared key
      */
 
@@ -66,7 +105,7 @@ public class MemTracker {
     /**
      * method get item with declared id
      *
-     * @param id
+     * @param id item id
      * @return item with declared id
      */
 
@@ -84,7 +123,7 @@ public class MemTracker {
     /**
      * method for search item index with declared id
      *
-     * @param id
+     * @param id - item id
      * @return item index with declared id
      */
 
@@ -99,37 +138,12 @@ public class MemTracker {
         return findIndexItem;
     }
 
-    /**
-     * method delete item with declared id
-     *
-     * @param id
-     */
-
-    public boolean deleteItem(int id) {
-        boolean done = false;
-        int index = this.findIndex(id);
-        if (index != - 1) {
-            this.items.remove(index);
-            done = true;
-        }
-        return done;
+    @Override
+    public void init() {
     }
 
-    /**
-     * method replace item with declared id
-     *
-     * @param id
-     */
-
-    public boolean replaceItem(int id, Item newItem) {
-        boolean result = false;
-        int index = this.findIndex(id);
-        if (index != - 1) {
-            this.items.set(index, newItem);
-            newItem.setId(id);
-            result = true;
-        }
-        return result;
+    @Override
+    public void close() {
     }
 }
 
