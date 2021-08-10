@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "items")
-public class Item implements Comparable<Item>{
+public class Item implements Comparable<Item> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,7 +78,9 @@ public class Item implements Comparable<Item>{
     @Override
     public String toString() {
         return "item Id: " + id +
-                ", item Name: " + name;
+                ", item Name: " + name +
+                ", item Description: " + description +
+                ", item Date created: " + created;
     }
 
     @Override
@@ -87,12 +89,14 @@ public class Item implements Comparable<Item>{
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
         return id == item.id &&
-                Objects.equals(name, item.name);
+                Objects.equals(name, item.name) &&
+                Objects.equals(description, item.description) &&
+                Objects.equals(created, item.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, description, created);
     }
 
     /**
